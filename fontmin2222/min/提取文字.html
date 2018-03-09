@@ -1,0 +1,40 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset=UTF-8>
+    <title>recursion</title>
+    <style type="text/css">
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var array = [];
+            var str = '';
+            aa();
+            console.log(str)
+            function aa() {
+                var tags = document.body.getElementsByTagName('*');
+                for (var i = 0; i < tags.length; i++) {
+                    array.push(getText(tags[i]));
+                }
+                //数组去重
+                array = array.join('').replace(/\s+/g, "").split('');
+                str = [...new Set(array)].join();
+            }
+
+            function getText(dom) {
+
+                var index = 0, html = dom.innerHTML;
+                while (dom.children.length && index < dom.children.length) {
+                    var chtml = dom.children[index].outerHTML;
+                    html = dom.innerHTML.replace(chtml, '');
+                    index++;
+                }
+                return html;
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>张梦溪</p>
+</body>
+</html>

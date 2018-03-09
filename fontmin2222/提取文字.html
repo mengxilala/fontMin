@@ -1,0 +1,48 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta charset=UTF-8>
+    <title>recursion</title>
+    <style type="text/css">
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var array = [];
+            var str = '';
+            aa();
+            console.log(str)
+            function aa() {
+                var tags = document.body.getElementsByTagName('*');
+                for (var i = 0; i < tags.length; i++) {
+                    array.push(getText(tags[i]));
+                }
+                //数组去重
+                array = array.join('').replace(/\s+/g, "").split('');
+                str=[...new Set(array)].join();
+            }
+
+            function getText(dom) {
+                
+                var index = 0, html = dom.innerHTML;
+                while (dom.children.length && index < dom.children.length) {
+                    var chtml = dom.children[index].outerHTML;
+                    html = dom.innerHTML.replace(chtml, '');
+                    index++;
+                }
+                return html;
+            }
+        }
+    </script>
+</head>
+<body>
+    <p>
+        ths is p环境设计何健飞道
+        <a href="">hww地方撒发
+            <span>yjy股份梵蒂冈</span>
+        </a>wyz个梵蒂冈
+    </p>
+    <span>text个人梵蒂冈<i></i>next染头发告发</span>
+    <i>this is i个公分的</i>
+    <b>this is b个梵蒂冈发工</b>
+</body>
+</html>
